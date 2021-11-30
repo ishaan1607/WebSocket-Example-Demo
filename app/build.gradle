@@ -62,7 +62,6 @@ dependencies {
     //ViewModel and LiveData
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
-    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
 
     //Navigation
@@ -71,7 +70,6 @@ dependencies {
 
     //Moshi
     implementation "com.squareup.moshi:moshi-kotlin:$moshi_version"
-    kapt 'com.squareup.moshi:moshi-kotlin-codegen:1.12.0'
 
     //Material Design and UI
     implementation "com.google.android.material:material:$material_version"
