@@ -5,12 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.ishaan.websocketexample2.databinding.FragmentMainBinding
+import com.ishaan.websocketexample2.ui.adapter.CryptoAdapter
+import com.ishaan.websocketexample2.ui.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainFragment : Fragment() {
     private lateinit var binding: FragmentMainBinding
+    private val viewModel: MainViewModel by viewModels()
+    private lateinit var mAdapter: CryptoAdapter
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -21,5 +27,18 @@ class MainFragment : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
+        mAdapter = CryptoAdapter()
+        binding.recyclerView.adapter = mAdapter
+
+        observePrices()
+    }
+
+    private fun observePrices() {
+        viewModel.prices.observe(viewLifecycleOwner, {
+            mAdapter.data = it
+        })
+    }
 }
