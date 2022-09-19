@@ -37,8 +37,8 @@ class MainFragment : Fragment() {
     }
 
     private fun observePrices() {
-        viewModel.prices.observe(viewLifecycleOwner, {
+        viewModel.prices.observe(viewLifecycleOwner) {
             mAdapter.data = it
-        })
+        }
     }
 }
