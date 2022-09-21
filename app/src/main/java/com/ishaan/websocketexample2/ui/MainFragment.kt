@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.ishaan.websocketexample2.databinding.FragmentMainBinding
 import com.ishaan.websocketexample2.ui.adapter.CryptoAdapter
 import com.ishaan.websocketexample2.ui.viewmodel.MainViewModel
@@ -24,6 +25,7 @@ class MainFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentMainBinding.inflate(inflater, container, false)
+        viewModel.createService(this)
         return binding.root
     }
 
@@ -32,6 +34,10 @@ class MainFragment : Fragment() {
 
         mAdapter = CryptoAdapter()
         binding.recyclerView.adapter = mAdapter
+
+        binding.btnBye.setOnClickListener {
+            findNavController().navigate(MainFragmentDirections.actionMainFragmentToByeFragment())
+        }
 
         observePrices()
     }

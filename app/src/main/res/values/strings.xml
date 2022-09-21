@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">WebSocket Example 2</string>
+    <string name="bye">Bye</string>
+    <string name="bye_websocket">Bye WebSocket</string>
 </resources>

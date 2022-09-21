@@ -9,5 +9,15 @@
         android:id="@+id/main_fragment"
         android:name="com.ishaan.websocketexample2.ui.MainFragment"
         android:label="MainFragment"
-        tools:layout="@layout/fragment_main" />
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/action_main_fragment_to_bye_fragment"
+            app:destination="@id/bye_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/bye_fragment"
+        android:name="com.ishaan.websocketexample2.ui.ByeFragment"
+        android:label="ByeFragment"
+        tools:layout="@layout/fragment_bye" />
 </navigation>

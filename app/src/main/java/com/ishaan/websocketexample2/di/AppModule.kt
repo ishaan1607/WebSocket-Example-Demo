@@ -5,6 +5,7 @@ import com.ishaan.websocketexample2.BuildConfig
 import com.ishaan.websocketexample2.MainApplication
 import com.ishaan.websocketexample2.sockets.CoinbaseService
 import com.ishaan.websocketexample2.sockets.FlowStreamAdapter
+import com.ishaan.websocketexample2.ui.MainFragment
 import com.squareup.moshi.Moshi
 import com.tinder.scarlet.Scarlet
 import com.tinder.scarlet.lifecycle.android.AndroidLifecycle
@@ -44,20 +45,5 @@ class AppModule {
         return OkHttpClient.Builder()
             .addInterceptor(logger)
             .build()
-    }
-
-    @Provides
-    fun providesScarlet(application: MainApplication, client: OkHttpClient, moshi: Moshi): Scarlet {
-        return Scarlet.Builder()
-            .webSocketFactory(client.newWebSocketFactory("wss://ws-feed.pro.coinbase.com"))
-            .addMessageAdapterFactory(MoshiMessageAdapter.Factory(moshi))
-            .addStreamAdapterFactory(FlowStreamAdapter.Factory())
-            .lifecycle(AndroidLifecycle.ofApplicationForeground(application))
-            .build()
-    }
-
-    @Provides
-    fun provideCoinbaseService(scarlet: Scarlet): CoinbaseService {
-        return scarlet.create()
     }
 }
