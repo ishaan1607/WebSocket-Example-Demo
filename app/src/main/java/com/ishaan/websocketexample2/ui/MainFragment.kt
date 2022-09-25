@@ -1,6 +1,7 @@
 package com.ishaan.websocketexample2.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -44,6 +45,7 @@ class MainFragment : Fragment() {
 
     private fun observePrices() {
         viewModel.prices.observe(viewLifecycleOwner) {
+            Log.d("Pui","data to adapter")
             mAdapter.data = it
         }
     }
