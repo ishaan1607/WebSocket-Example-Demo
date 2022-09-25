@@ -45,7 +45,7 @@ class MainFragment : Fragment() {
 
     private fun observePrices() {
         viewModel.prices.observe(viewLifecycleOwner) {
-            Log.d("Pui","data to adapter")
+            Log.d("Pui","data to adapter 2")
             mAdapter.data = it
         }
     }
